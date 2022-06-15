@@ -1,4 +1,4 @@
-import db from '../db'
+import db from '../db.js';
 import {Model, DataTypes} from "sequelize";
 
 class Cities extends Model {

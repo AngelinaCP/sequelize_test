@@ -1,4 +1,4 @@
-import db from '../db'
+import db from '../db.js';
 import {Model, DataTypes} from "sequelize";
 
 class Contacts extends Model {
@@ -24,7 +24,7 @@ const model = Contacts.init({
         allowNull: false,
     },
     descriptopn: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: false,
     },
     car_id: {

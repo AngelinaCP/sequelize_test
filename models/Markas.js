@@ -1,4 +1,4 @@
-import db from '../db'
+import db from '../db.js';
 import {Model, DataTypes} from "sequelize";
 
 class Markas extends Model {
@@ -20,7 +20,7 @@ const model = Markas.init({
         foreignKey: true
     },
     sequelize: db,
-    tableName: 'Markas'
+    tableName: 'Marka'
 });
 
 export default model;

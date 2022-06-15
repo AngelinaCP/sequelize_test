@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon main.js"
@@ -18,6 +19,7 @@
   },
   "homepage": "https://github.com/AngelinaCP/sequelize_test#readme",
   "dependencies": {
+    "cls-hooked": "^4.2.2",
     "nodemon": "^2.0.16",
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
