@@ -1,11 +1,11 @@
 import db from '../db.js';
-import {Model, DataTypes} from "sequelize";
+import Sequelize, {Model, DataTypes} from "sequelize";
 
-class Models extends Model {
+class Transmission extends Model {
 
 }
 
-const model = Models.init({
+const model = Transmission.init({
     id: {
         type: DataTypes.INTEGER.UNSIGNED,
         primaryKey: true,
@@ -15,12 +15,12 @@ const model = Models.init({
         type: Sequelize.STRING,
         allowNull: false,
     },
-    marka_id: {
+    car_id: {
         type: DataTypes.INTEGER.UNSIGNED,
         foreignKey: true
-    },
+    }}, {
     sequelize: db,
-    tableName: 'models'
+    tableName: 'transmission'
 });
 
 export default model;

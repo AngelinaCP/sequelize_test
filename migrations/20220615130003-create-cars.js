@@ -1,10 +1,11 @@
 'use strict';
 
+const {DataTypes} = require("sequelize");
 module.exports = {
   async up (queryInterface, Sequelize) {
      await queryInterface.createTable('cars', {
        id: {
-         type: DataTypes.BIGINT(20).UNSIGNED,
+         type: DataTypes.INTEGER.UNSIGNED,
          primaryKey: true,
          autoIncrement: true
        },

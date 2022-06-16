@@ -1,5 +1,5 @@
 import db from '../db.js';
-import {Model, DataTypes} from "sequelize";
+import Sequelize, {Model, DataTypes} from "sequelize";
 
 class Photos extends Model {
 
@@ -7,7 +7,7 @@ class Photos extends Model {
 
 const model = Photos.init({
     id: {
-        type: DataTypes.BIGINT(20).UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED,
         primaryKey: true,
         unique: true
     },
@@ -20,9 +20,9 @@ const model = Photos.init({
         allowNull: false,
     },
     car_id: {
-        type: DataTypes.BIGINT(20).UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED,
         foreignKey: true
-    },
+    }}, {
     sequelize: db,
     tableName: 'photos'
 });

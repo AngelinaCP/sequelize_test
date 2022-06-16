@@ -4,6 +4,12 @@ import sequelize, { DataTypes } from 'sequelize';
 import Migration from './models/_Migration.js';
 import db from './db.js';
 import { fileURLToPath } from 'url';
+import Sequelize from "sequelize";
+
+import {createRequire} from "module";
+const require = createRequire(import.meta.url)
+// const ddd = path.join(migrationsPath, file);
+// import { up, down } from ddd;
 
 const __filename = fileURLToPath(import.meta.url);
 
@@ -18,7 +24,7 @@ export async function runMigrations() {
         filename: DataTypes.STRING,
         appliedAt: {
             type: DataTypes.DATE,
-            defaultValue: sequelize.fn('current_timestamp'),
+            defaultValue: Sequelize.NOW,
             allowNull: false
         }
     });
@@ -42,18 +48,18 @@ export async function runMigrations() {
         logger.debug(`Migration "${file}" applying...`, { scope: 'migrations' });
 
         const { up, down } = require(path.join(migrationsPath, file));
-
-        if (!up || !down) {
-            throw new Error(`Invalid migration functions in file ${file}`);
-        }
-
-        await up(queryInterface, sequelize);
-
-        const item = new Migration({
-            filename: file,
-            appliedAt: Date.now()
-        });
-        await item.save();
+        //
+        // if (!up || !down) {
+        //     throw new Error(`Invalid migration functions in file ${file}`);
+        // }
+        //
+        // await up(queryInterface, sequelize);
+        //
+        // const item = new Migration({
+        //     filename: file,
+        //     appliedAt: Date.now()
+        // });
+        // await item.save();
     }
 
     function readDir(dir) {

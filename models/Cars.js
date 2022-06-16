@@ -1,6 +1,12 @@
 import db from '../db.js';
-import {Model, DataTypes} from "sequelize";
-import Sequelize from "sequelize/types";
+import Sequelize, {Model, DataTypes} from "sequelize";
+import Body_Type from "./Body_Type.js";
+import Cities from "./Cities.js";
+import Contacts from "./Contacts.js";
+import Drive_Unit from "./Drive_Unit.js";
+import Markas from "./Markas.js";
+import Photos from "./Photos.js";
+import transmission from "./Transmission.js";
 
 class Cars extends Model {
 
@@ -41,24 +47,24 @@ const model = Cars.init({
     },
 );
 
-model.hasOne(City, {as: 'Cities', foreignKey: 'car_id'});
-model.hasOne(Marka, {as: 'Markas', foreignKey: 'car_id'});
-model.hasOne(Body_type, {as: 'Body_Types', foreignKey: 'car_id'});
-model.hasOne(Transmission, {as: 'Transmission', foreignKey: 'car_id'});
+model.hasOne(Cities, {as: 'Cities', foreignKey: 'car_id'});
+model.hasOne(Markas, {as: 'Markas', foreignKey: 'car_id'});
+model.hasOne(Body_Type, {as: 'Body_Types', foreignKey: 'car_id'});
+model.hasOne(transmission, {as: 'Transmission', foreignKey: 'car_id'});
 model.hasOne(Drive_Unit, {as: 'Drive_Units', foreignKey: 'car_id'});
-model.hasOne(Contact, {as: 'Contacts', foreignKey: 'car_id'});
-model.hasMany(Photo, {as: 'Photos', foreignKey: 'car_id'});
+model.hasOne(Contacts, {as: 'Contacts', foreignKey: 'car_id'});
+model.hasMany(Photos, {as: 'Photos', foreignKey: 'car_id'});
 
 //belongsTo
 
-City.belongsTo(Cars, {foreignKey: 'card_id'});
-Marka.belongsTo(Marka, {foreignKey: 'card_id'});
-Body_type.belongsTo(Body_type, {foreignKey: 'card_id'});
-City.belongsTo(Cars, {foreignKey: 'card_id'});
-City.belongsTo(Cars, {foreignKey: 'card_id'});
-City.belongsTo(Cars, {foreignKey: 'card_id'});
+Cities.belongsTo(Cars, {foreignKey: 'card_id'});
+Markas.belongsTo(Markas, {foreignKey: 'card_id'});
+Body_Type.belongsTo(Body_Type, {foreignKey: 'card_id'});
+Cities.belongsTo(Cars, {foreignKey: 'card_id'});
+Cities.belongsTo(Cars, {foreignKey: 'card_id'});
+Cities.belongsTo(Cars, {foreignKey: 'card_id'});
 
 
-
+export default model;
 
 

@@ -1,6 +1,6 @@
 import { openConnection, closeConnection } from './db.js';
 import { runMigrations } from './migration.js';
-import Sequelize, {DataTypes} from "./sequelize/types/index.js";
+// import Sequelize, {DataTypes} from "./sequelize/types/index.js";
 import Cars from './models/Cars.js';
 // import UserDetails from './models/UserDetails';
 // import Project from './models/Project';
@@ -12,14 +12,15 @@ async function bootstrap() {
 
         await runMigrations();
 
-        console.info('Connected');
+        // console.info('Connected');
 
 
-        await db.transaction(async () => {
-            const cars = new Cars({id: 'Admin', spec_card: 'Admin', engine: 'Admin', year: 'Admin',
-                price: 'Admin', color: 'Admin', mileage: 'Admin'});
-            await cars.save();
-    })} catch (err) {
+        // await db.transaction(async () => {
+        //     const cars = new Cars({id: 'Admin', spec_card: 'Admin', engine: 'Admin', year: 'Admin',
+        //         price: 'Admin', color: 'Admin', mileage: 'Admin'});
+        //     await cars.save();
+    // })
+    } catch (err) {
         console.error(err);
     }
 

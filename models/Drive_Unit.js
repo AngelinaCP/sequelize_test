@@ -1,5 +1,5 @@
 import db from '../db.js';
-import {Model, DataTypes} from "sequelize";
+import Sequelize, {Model, DataTypes} from "sequelize";
 
 class Drive_unit extends Model {
 
@@ -7,7 +7,7 @@ class Drive_unit extends Model {
 
 const model = Drive_unit.init({
     id: {
-        type: DataTypes.BIGINT(20).UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED,
         primaryKey: true,
         unique: true
     },
@@ -16,9 +16,9 @@ const model = Drive_unit.init({
         allowNull: false,
     },
     car_id: {
-        type: DataTypes.BIGINT(20).UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED,
         foreignKey: true
-    },
+    }}, {
     sequelize: db,
     tableName: 'drive_unit'
 });

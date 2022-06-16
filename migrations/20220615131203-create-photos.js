@@ -6,7 +6,7 @@ module.exports = {
 
      await queryInterface.createTable('photos', {
        id: {
-         type: DataTypes.BIGINT(20).UNSIGNED,
+         type: DataTypes.INTEGER.UNSIGNED,
          primaryKey: true,
          unique: true
        },
@@ -19,12 +19,12 @@ module.exports = {
          allowNull: false,
        },
        car_id: {
-         type: DataTypes.BIGINT(20).UNSIGNED,
+         type: DataTypes.INTEGER.UNSIGNED,
          foreignKey: true
        }});
        await queryInterface.createTable('contacts', {
          id: {
-           type: DataTypes.BIGINT(20).UNSIGNED,
+           type: DataTypes.INTEGER.UNSIGNED,
            primaryKey: true,
            unique: true
          },
@@ -45,13 +45,13 @@ module.exports = {
            allowNull: false,
          },
          car_id: {
-           type: DataTypes.BIGINT(20).UNSIGNED,
+           type: DataTypes.INTEGER.UNSIGNED,
            foreignKey: true
          }
        });
     await queryInterface.createTable('body_type', {
       id: {
-        type: DataTypes.BIGINT(20).UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED,
         primaryKey: true,
         unique: true
       },
@@ -60,13 +60,13 @@ module.exports = {
         allowNull: false,
       },
       car_id: {
-        type: DataTypes.BIGINT(20).UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED,
         foreignKey: true
       }
     });
     await queryInterface.createTable('cities', {
       id: {
-        type: DataTypes.BIGINT(20).UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED,
         primaryKey: true,
         unique: true
       },
@@ -75,13 +75,13 @@ module.exports = {
         allowNull: false,
       },
       car_id: {
-        type: DataTypes.BIGINT(20).UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED,
         foreignKey: true
       }
     });
     await queryInterface.createTable('drive_unit', {
       id: {
-        type: DataTypes.BIGINT(20).UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED,
         primaryKey: true,
         unique: true
       },
@@ -90,13 +90,13 @@ module.exports = {
         allowNull: false,
       },
       car_id: {
-        type: DataTypes.BIGINT(20).UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED,
         foreignKey: true
       }
     });
     await queryInterface.createTable('marka', {
       id: {
-        type: DataTypes.BIGINT(20).UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED,
         primaryKey: true,
         unique: true
       },
@@ -105,13 +105,13 @@ module.exports = {
         allowNull: false,
       },
       car_id: {
-        type: DataTypes.BIGINT(20).UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED,
         foreignKey: true
       }
     });
     await queryInterface.createTable('models', {
       id: {
-        type: DataTypes.BIGINT(20).UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED,
         primaryKey: true,
         unique: true
       },
@@ -120,11 +120,25 @@ module.exports = {
         allowNull: false,
       },
       marka_id: {
-        type: DataTypes.BIGINT(20).UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED,
         foreignKey: true
       }
     });
-
+    await queryInterface.createTable('transmission', {
+      id: {
+        type: DataTypes.INTEGER.UNSIGNED,
+        primaryKey: true,
+        unique: true
+      },
+      name: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      marka_id: {
+        type: DataTypes.INTEGER.UNSIGNED,
+        foreignKey: true
+      }
+    });
   },
 
   async down (queryInterface, Sequelize) {

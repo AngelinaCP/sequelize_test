@@ -1,5 +1,5 @@
 import db from '../db.js';
-import {Model, DataTypes} from "sequelize";
+import Sequelize, {Model, DataTypes} from 'sequelize';
 
 class Body_type extends Model {
 
@@ -7,7 +7,7 @@ class Body_type extends Model {
 
 const model = Body_type.init({
     id: {
-        type: DataTypes.BIGINT(20).UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED,
         primaryKey: true,
         unique: true
     },
@@ -16,11 +16,12 @@ const model = Body_type.init({
         allowNull: false,
     },
     car_id: {
-        type: DataTypes.BIGINT(20).UNSIGNED,
+        type: DataTypes.INTEGER.UNSIGNED,
         foreignKey: true
-    },
+    }}, {
     sequelize: db,
     tableName: 'body_type'
 });
+
 
 export default model;
