@@ -23,7 +23,7 @@ const model = Contacts.init({
         type: Sequelize.STRING,
         allowNull: false,
     },
-    descriptopn: {
+    description: {
         type: Sequelize.TEXT,
         allowNull: false,
     },

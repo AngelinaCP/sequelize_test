@@ -40,7 +40,7 @@ module.exports = {
            type: Sequelize.STRING,
            allowNull: false,
          },
-         descriptopn: {
+         description: {
            type: Sequelize.TEXT,
            allowNull: false,
          },

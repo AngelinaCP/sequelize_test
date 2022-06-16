@@ -6,9 +6,10 @@ import db from './db.js';
 import { fileURLToPath } from 'url';
 import Sequelize from "sequelize";
 
-import {createRequire} from "module";
+import {createRequire} from 'module';
 const require = createRequire(import.meta.url)
 // const ddd = path.join(migrationsPath, file);
+
 // import { up, down } from ddd;
 
 const __filename = fileURLToPath(import.meta.url);
