@@ -1,5 +1,6 @@
-import db from '../db.js';
-import Sequelize, {Model, DataTypes} from "sequelize";
+import Sequelize, { DataTypes, Model } from 'sequelize';
+
+import db from '../db';
 
 class Markas extends Model {
 

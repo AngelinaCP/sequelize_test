@@ -1,12 +1,12 @@
-import db from '../db.js';
-import Sequelize, {Model, DataTypes} from "sequelize";
-import Body_Type from "./Body_Type.js";
-import Cities from "./Cities.js";
-import Contacts from "./Contacts.js";
-import Drive_Unit from "./Drive_Unit.js";
-import Markas from "./Markas.js";
-import Photos from "./Photos.js";
-import transmission from "./Transmission.js";
+import Sequelize, { DataTypes, Model } from 'sequelize';
+import db from '../db';
+import Body_Type from './Body_Type';
+import Contacts from './Contacts';
+import Drive_Unit from './Drive_Unit';
+import Photos from './Photos';
+import Cities from './Cities';
+import Markas from './Markas';
+import transmission from './transmission';
 
 class Cars extends Model {
 

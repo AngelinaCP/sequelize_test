@@ -1,6 +1,5 @@
 import { DataTypes, Model } from 'sequelize';
-
-import db from '../db.js';
+import db from '../db';
 
 class Migration extends Model {
 }

@@ -1,10 +1,15 @@
-import { openConnection, closeConnection } from './db.js';
-import { runMigrations } from './migration.js';
-// import Sequelize, {DataTypes} from "./sequelize/types/index.js";
-import Cars from './models/Cars.js';
-// import UserDetails from './models/UserDetails';
-// import Project from './models/Project';
-// import Skill from "./models/Skill";
+import { openConnection, closeConnection } from "./db.js";
+import { runMigrations } from "./migration.js";
+import Cars from "./models/Cars.js";
+import db from "./db";
+// import Body_Type from './Body_Type';
+// import Contacts from './Contacts';
+// import Drive_Unit from './Drive_Unit';
+// import Photos from './Photos';
+// import Cities from './Cities';
+// import Markas from './Markas';
+// import transmission from './transmission';
+
 
 async function bootstrap() {
     try {
@@ -12,14 +17,14 @@ async function bootstrap() {
 
         await runMigrations();
 
-        // console.info('Connected');
+        console.info('Connected');
 
 
-        // await db.transaction(async () => {
-        //     const cars = new Cars({id: 'Admin', spec_card: 'Admin', engine: 'Admin', year: 'Admin',
-        //         price: 'Admin', color: 'Admin', mileage: 'Admin'});
-        //     await cars.save();
-    // })
+        await db.transaction(async () => {
+            const cars = new Cars({spec_card: true, engine: 'Admin', year: 'Admin',
+                price: 'Admin', color: 'Admin', mileage: 'Admin'});
+            await cars.save();
+    })
     } catch (err) {
         console.error(err);
     }

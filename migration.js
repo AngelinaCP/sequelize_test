@@ -6,16 +6,6 @@ import db from './db.js';
 import { fileURLToPath } from 'url';
 import Sequelize from "sequelize";
 
-import {createRequire} from 'module';
-const require = createRequire(import.meta.url)
-// const ddd = path.join(migrationsPath, file);
-
-// import { up, down } from ddd;
-
-const __filename = fileURLToPath(import.meta.url);
-
-const __dirname = path.dirname(__filename);
-
 const logger = console;
 const migrationsPath = path.join(__dirname, 'migrations');
 
@@ -49,13 +39,13 @@ export async function runMigrations() {
         logger.debug(`Migration "${file}" applying...`, { scope: 'migrations' });
 
         const { up, down } = require(path.join(migrationsPath, file));
-        //
-        // if (!up || !down) {
-        //     throw new Error(`Invalid migration functions in file ${file}`);
-        // }
-        //
-        // await up(queryInterface, sequelize);
-        //
+
+        if (!up || !down) {
+            throw new Error(`Invalid migration functions in file ${file}`);
+        }
+
+        await up(queryInterface, sequelize);
+
         // const item = new Migration({
         //     filename: file,
         //     appliedAt: Date.now()
