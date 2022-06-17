@@ -17,9 +17,7 @@ async function bootstrap() {
         await runMigrations();
         console.info('Connected');
         await db.transaction(async () => {
-            const cars = new Cities({
-                name: 'Kazan'
-            });
+            const cars = new Cities({ name: 'Kazan', car_id: 1});
             await cars.save();
         })
     } catch (err) {

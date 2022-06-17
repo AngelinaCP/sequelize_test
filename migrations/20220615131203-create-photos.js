@@ -134,10 +134,68 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      marka_id: {
+      car_id: {
         type: DataTypes.INTEGER.UNSIGNED,
         foreignKey: true
       }
+    });
+
+    await queryInterface.addConstraint('body_type', {
+      fields: ['car_id'],
+      type: 'foreign key',
+      references: { table: 'cars', field: 'id' },
+      onDelete: 'set null',
+      onUpdate: 'restrict'
+      //can use 'cascade' here
+    });
+    await queryInterface.addConstraint('cities', {
+      fields: ['car_id'],
+      type: 'foreign key',
+      references: { table: 'cars', field: 'id' },
+      onDelete: 'set null',
+      onUpdate: 'restrict'
+    });
+    await queryInterface.addConstraint('contacts', {
+      fields: ['car_id'],
+      type: 'foreign key',
+      references: { table: 'cars', field: 'id' },
+      onDelete: 'set null',
+      onUpdate: 'restrict'
+    });
+    await queryInterface.addConstraint('drive_unit', {
+      fields: ['car_id'],
+      type: 'foreign key',
+      references: { table: 'cars', field: 'id' },
+      onDelete: 'set null',
+      onUpdate: 'restrict'
+    });
+    await queryInterface.addConstraint('marka', {
+      fields: ['car_id'],
+      type: 'foreign key',
+      references: { table: 'cars', field: 'id' },
+      onDelete: 'set null',
+      onUpdate: 'restrict'
+    });
+    await queryInterface.addConstraint('models', {
+      fields: ['marka_id'],
+      type: 'foreign key',
+      references: { table: 'marka', field: 'id' },
+      onDelete: 'set null',
+      onUpdate: 'restrict'
+    });
+    await queryInterface.addConstraint('photos', {
+      fields: ['car_id'],
+      type: 'foreign key',
+      references: { table: 'cars', field: 'id' },
+      onDelete: 'set null',
+      onUpdate: 'restrict'
+    });
+    await queryInterface.addConstraint('transmission', {
+      fields: ['car_id'],
+      type: 'foreign key',
+      references: { table: 'cars', field: 'id' },
+      onDelete: 'set null',
+      onUpdate: 'restrict'
     });
   },
 

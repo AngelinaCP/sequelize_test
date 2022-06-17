@@ -57,12 +57,12 @@ model.hasMany(Photos, {as: 'Photos', foreignKey: 'car_id'});
 
 //belongsTo
 
-Cities.belongsTo(Cars, {foreignKey: 'card_id'});
-Markas.belongsTo(Markas, {foreignKey: 'card_id'});
-Body_Type.belongsTo(Body_Type, {foreignKey: 'card_id'});
-Cities.belongsTo(Cars, {foreignKey: 'card_id'});
-Cities.belongsTo(Cars, {foreignKey: 'card_id'});
-Cities.belongsTo(Cars, {foreignKey: 'card_id'});
+Cities.belongsTo(Cars, {foreignKey: 'car_id'});
+Markas.belongsTo(Markas, {foreignKey: 'car_id'});
+Body_Type.belongsTo(Body_Type, {foreignKey: 'car_id'});
+Cities.belongsTo(Cars, {foreignKey: 'car_id'});
+Cities.belongsTo(Cars, {foreignKey: 'car_id'});
+Cities.belongsTo(Cars, {foreignKey: 'car_id'});
 
 
 export default model;

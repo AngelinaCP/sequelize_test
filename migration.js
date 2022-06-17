@@ -46,11 +46,11 @@ export async function runMigrations() {
 
         await up(queryInterface, sequelize);
 
-        // const item = new Migration({
-        //     filename: file,
-        //     appliedAt: Date.now()
-        // });
-        // await item.save();
+        const item = new Migration({
+            filename: file,
+            appliedAt: Date.now()
+        });
+        await item.save();
     }
 
     function readDir(dir) {
