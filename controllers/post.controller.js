@@ -24,17 +24,14 @@ import Cities from "../models/Cities";
     //     }
     // }
     //
-    console.log('1AAAAAAA')
     exports.getAllPosts = async (req, res, next) => {
-        console.log('2AAAAAA')
-        // try {
-        //     console.error('AAAAAA')
-        //     const ALL = await Cars.findAll();
-        //     console.log(ALL)
-        //     return res.status(200).json(ALL);
-        // } catch (error) {
-        //     return res.status(500).json(error);
-        // }
+        try {
+            const ALL = await Cars.findAll();
+            res.json(ALL)
+            // return res.status(200).json(ALL);
+        } catch (error) {
+            return res.status(500).json(error);
+        }
     };
 // }
 

@@ -13,7 +13,7 @@ const db = require("../db");
 const Cities = require("../models/Cities");
 const router = express.Router();
 
-router.get('/post', postController.getAllPosts);
+router.get('/', postController.getAllPosts);
 
 module.exports = router
 
