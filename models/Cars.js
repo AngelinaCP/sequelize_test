@@ -6,6 +6,7 @@ import Drive_Unit from './Drive_Unit';
 import Photos from './Photos';
 import Cities from './Cities';
 import Markas from './Markas';
+import Models from './Models';
 import transmission from './transmission';
 
 class Cars extends Model {
@@ -49,6 +50,7 @@ const model = Cars.init({
 
 model.hasOne(Cities, {as: 'Cities', foreignKey: 'car_id'});
 model.hasOne(Markas, {as: 'Markas', foreignKey: 'car_id'});
+model.hasOne(Models, {as: 'Models', foreignKey: 'marka_id'});
 model.hasOne(Body_Type, {as: 'Body_Types', foreignKey: 'car_id'});
 model.hasOne(transmission, {as: 'Transmission', foreignKey: 'car_id'});
 model.hasOne(Drive_Unit, {as: 'Drive_Units', foreignKey: 'car_id'});
@@ -60,9 +62,11 @@ model.hasMany(Photos, {as: 'Photos', foreignKey: 'car_id'});
 Cities.belongsTo(Cars, {foreignKey: 'car_id'});
 Markas.belongsTo(Markas, {foreignKey: 'car_id'});
 Body_Type.belongsTo(Body_Type, {foreignKey: 'car_id'});
-Cities.belongsTo(Cars, {foreignKey: 'car_id'});
-Cities.belongsTo(Cars, {foreignKey: 'car_id'});
-Cities.belongsTo(Cars, {foreignKey: 'car_id'});
+Drive_Unit.belongsTo(Cars, {foreignKey: 'car_id'});
+Photos.belongsTo(Cars, {foreignKey: 'car_id'});
+transmission.belongsTo(Cars, {foreignKey: 'car_id'});
+Contacts.belongsTo(Cars, {foreignKey: 'car_id'});
+Models.belongsTo(Markas, {foreignKey: 'marka_id'});
 
 
 export default model;

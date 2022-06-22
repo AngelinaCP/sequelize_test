@@ -10,7 +10,8 @@ const model = Models.init({
     id: {
         type: DataTypes.INTEGER.UNSIGNED,
         primaryKey: true,
-        unique: true
+        unique: true,
+        autoIncrement: true
     },
     name: {
         type: Sequelize.STRING,
@@ -19,9 +20,9 @@ const model = Models.init({
     marka_id: {
         type: DataTypes.INTEGER.UNSIGNED,
         foreignKey: true
-    },
+    }}, {
     sequelize: db,
     tableName: 'models'
-});
+    });
 
 export default model;

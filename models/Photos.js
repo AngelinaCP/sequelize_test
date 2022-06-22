@@ -10,7 +10,8 @@ const model = Photos.init({
     id: {
         type: DataTypes.INTEGER.UNSIGNED,
         primaryKey: true,
-        unique: true
+        unique: true,
+        autoIncrement: true
     },
     url: {
         type: Sequelize.STRING,

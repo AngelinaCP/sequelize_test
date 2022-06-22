@@ -11,7 +11,8 @@ const model = Cities.init({
     id: {
         type: DataTypes.INTEGER.UNSIGNED,
         primaryKey: true,
-        unique: true
+        unique: true,
+        autoIncrement: true
     },
     name: {
         type: Sequelize.STRING,
