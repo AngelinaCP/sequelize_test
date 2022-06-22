@@ -26,7 +26,7 @@ app.use( '/post', postRouter)
 async function bootstrap() {
     try {
         await openConnection();
-        // await runMigrations();
+        await runMigrations();
         console.info('Connected');
         // await db.transaction(async () => {
         //     const cars = new Cities({ name: 'Kazan', car_id: 1});

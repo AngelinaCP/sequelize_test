@@ -37,9 +37,9 @@ const model = Cars.init({
     mileage: {
         type: Sequelize.STRING
     },
-    createdAt: {
+    created_at: {
         type: DataTypes.DATE },
-    updatedAt: {
+    updated_at: {
         type: DataTypes.DATE },
     }, {
         sequelize: db,

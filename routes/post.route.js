@@ -14,6 +14,7 @@ const Cities = require("../models/Cities");
 const router = express.Router();
 
 router.get('/', postController.getAllPosts);
+router.post('/', postController.createOnePost);
 
 module.exports = router
 
