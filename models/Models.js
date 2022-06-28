@@ -1,5 +1,5 @@
 import Sequelize, { DataTypes, Model } from 'sequelize';
-
+const Cars = require('./Cars')
 import db from '../db';
 
 class Models extends Model {
@@ -17,12 +17,15 @@ const model = Models.init({
         type: Sequelize.STRING,
         allowNull: false,
     },
-    marka_id: {
-        type: DataTypes.INTEGER.UNSIGNED,
-        foreignKey: true
-    }}, {
+    car_id: {
+        fields: 'car_id',
+        type: DataTypes.STRING,
+        foreignKey: true,
+        
+      }
+}, {
     sequelize: db,
     tableName: 'models'
     });
 
-export default model;
+module.exports = model;

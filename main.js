@@ -7,7 +7,7 @@ import Contacts from "./models/Contacts";
 import Drive_Unit from "./models/Drive_Unit";
 import Photos from "./models/Photos";
 import Cities from "./models/Cities";
-import Markas from "./models/Markas";
+import Makes from "./models/Make";
 import transmission from "./models/transmission";
 import postController from "./controllers/post.controller";
 import res from "express/lib/response";
@@ -21,7 +21,6 @@ const postRouter = require('./routes/post.route')
 app.use(cors());
 app.use(express.json())
 
-app.use( '/post', postRouter)
 
 async function bootstrap() {
     try {
@@ -37,8 +36,15 @@ async function bootstrap() {
     }
 }
 
+app.use( '/post', postRouter)
 app.listen(PORT, function() {
     console.log("Server started successfully");
 });
 
 bootstrap()
+
+//TODODO///
+//learn CASCADE on delete/update
+//connect models to markas
+//photo_id?
+//one id for city

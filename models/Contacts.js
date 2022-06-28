@@ -1,5 +1,5 @@
 import Sequelize, { DataTypes, Model } from 'sequelize';
-
+const Cars = require('./Cars')
 import db from '../db';
 
 
@@ -26,16 +26,15 @@ const model = Contacts.init({
         type: Sequelize.STRING,
         allowNull: false,
     },
-    description: {
-        type: Sequelize.TEXT,
-        allowNull: false,
-    },
     car_id: {
-        type: DataTypes.INTEGER.UNSIGNED,
-        foreignKey: true
-    }}, {
+        fields: 'car_id',
+        type: DataTypes.STRING,
+        foreignKey: true,
+        
+      }
+}, {
     sequelize: db,
     tableName: 'contacts'
 });
 
-export default model;
+module.exports = model;

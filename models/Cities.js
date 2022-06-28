@@ -1,5 +1,5 @@
 import Sequelize, { DataTypes, Model } from 'sequelize';
-
+const Cars = require('./Cars')
 import db from '../db';
 
 
@@ -9,9 +9,9 @@ class Cities extends Model {
 
 const model = Cities.init({
     id: {
-        type: DataTypes.INTEGER.UNSIGNED,
+        field: 'car_id',
+        type: Sequelize.INTEGER,
         primaryKey: true,
-        unique: true,
         autoIncrement: true
     },
     name: {
@@ -19,11 +19,21 @@ const model = Cities.init({
         allowNull: false,
     },
     car_id: {
-        type: DataTypes.INTEGER.UNSIGNED,
-        foreignKey: true
-    }}, {
+        type: DataTypes.STRING,
+        references: {
+            model : 'cars',
+            key: 'id'
+        }
+    }}
+    ,{
     sequelize: db,
-    tableName: 'cities'
-});
-
-export default model;
+    modelName: 'city' }
+);
+// Cities.associate = (models) => {
+//     // associations can be defined here
+//     Cities.belongsTo(models.Cars, {
+//       as: 'city',
+//       foreignKey: 'car_id'
+//     });
+//   };
+module.exports = model;

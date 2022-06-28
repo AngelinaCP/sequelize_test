@@ -11,4 +11,5 @@ const model = Migration.init({
     sequelize: db,
     tableName: '_migrations'
 });
+
 export default model;

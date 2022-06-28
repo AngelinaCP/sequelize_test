@@ -7,10 +7,8 @@ const postController = require('../controllers/post.controller')
 
 // module.exports = router
 
-
 const express = require('express');
 const db = require("../db");
-const Cities = require("../models/Cities");
 const router = express.Router();
 
 router.get('/', postController.getAllPosts);

@@ -1,5 +1,5 @@
 import Sequelize, { DataTypes, Model } from 'sequelize';
-
+const Cars = require('./Cars')
 import db from '../db';
 
 
@@ -19,11 +19,14 @@ const model = Transmission.init({
         allowNull: false,
     },
     car_id: {
-        type: DataTypes.INTEGER.UNSIGNED,
-        foreignKey: true
-    }}, {
+        fields: 'car_id',
+        type: DataTypes.STRING,
+        foreignKey: true,
+        
+      }
+}, {
     sequelize: db,
     tableName: 'transmission'
 });
 
-export default model;
+module.exports = model;

@@ -8,7 +8,8 @@ module.exports = {
        id: {
          type: DataTypes.INTEGER.UNSIGNED,
          primaryKey: true,
-         unique: true
+         unique: true,
+         autoIncrement: true
        },
        url: {
          type: Sequelize.STRING,
@@ -16,21 +17,24 @@ module.exports = {
        },
        alt: {
          type: Sequelize.STRING,
-         allowNull: false,
+         allowNull: false
        },
        car_id: {
-         type: DataTypes.INTEGER.UNSIGNED,
-         foreignKey: true
+        fields: 'car_id',
+        type: DataTypes.STRING,
+         foreignKey: true,
+         
        }});
        await queryInterface.createTable('contacts', {
          id: {
            type: DataTypes.INTEGER.UNSIGNED,
            primaryKey: true,
-           unique: true
+           unique: true,
+           autoIncrement: true
          },
          name: {
            type: Sequelize.STRING,
-           allowNull: false,
+          //  allowNull: false,
          },
          mobile: {
            type: Sequelize.STRING,
@@ -38,14 +42,11 @@ module.exports = {
          },
          email: {
            type: Sequelize.STRING,
-           allowNull: false,
-         },
-         description: {
-           type: Sequelize.TEXT,
-           allowNull: false,
+          //  allowNull: false,
          },
          car_id: {
-           type: DataTypes.INTEGER.UNSIGNED,
+          fields: 'car_id',
+          type: DataTypes.STRING,
            foreignKey: true
          }
        });
@@ -53,59 +54,66 @@ module.exports = {
       id: {
         type: DataTypes.INTEGER.UNSIGNED,
         primaryKey: true,
-        unique: true
+        unique: true,
+        autoIncrement: true
       },
       name: {
         type: Sequelize.STRING,
-        allowNull: false,
+        // allowNull: false,
       },
       car_id: {
-        type: DataTypes.INTEGER.UNSIGNED,
-        foreignKey: true
+        type: DataTypes.STRING,
       }
     });
     await queryInterface.createTable('cities', {
       id: {
+        field: 'car_id',
         type: DataTypes.INTEGER.UNSIGNED,
         primaryKey: true,
-        unique: true
+        unique: true,
+        autoIncrement: true
       },
       name: {
         type: Sequelize.STRING,
         allowNull: false,
       },
       car_id: {
-        type: DataTypes.INTEGER.UNSIGNED,
-        foreignKey: true
+        type: DataTypes.STRING,
+      fields: ['car_id'],
+
       }
     });
     await queryInterface.createTable('drive_unit', {
       id: {
         type: DataTypes.INTEGER.UNSIGNED,
         primaryKey: true,
-        unique: true
+        unique: true,
+        autoIncrement: true
       },
       name: {
         type: Sequelize.STRING,
-        allowNull: false,
+        // allowNull: false,
       },
       car_id: {
-        type: DataTypes.INTEGER.UNSIGNED,
+        fields: 'car_id',
+        type: DataTypes.STRING,
         foreignKey: true
       }
     });
-    await queryInterface.createTable('marka', {
+    await queryInterface.createTable('makes', {
       id: {
         type: DataTypes.INTEGER.UNSIGNED,
         primaryKey: true,
-        unique: true
+        unique: true,
+        autoIncrement: true
       },
       name: {
         type: Sequelize.STRING,
         allowNull: false,
       },
       car_id: {
-        type: DataTypes.INTEGER.UNSIGNED,
+        fields: 'car_id',
+        type: DataTypes.STRING,
         foreignKey: true
       }
     });
@@ -113,14 +121,16 @@ module.exports = {
       id: {
         type: DataTypes.INTEGER.UNSIGNED,
         primaryKey: true,
-        unique: true
+        unique: true,
+        autoIncrement: true
       },
       name: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      marka_id: {
-        type: DataTypes.INTEGER.UNSIGNED,
+      car_id: {
+        fields: 'car_id',
+        type: DataTypes.STRING,
         foreignKey: true
       }
     });
@@ -128,14 +138,16 @@ module.exports = {
       id: {
         type: DataTypes.INTEGER.UNSIGNED,
         primaryKey: true,
-        unique: true
+        unique: true,
+        autoIncrement: true
       },
       name: {
         type: Sequelize.STRING,
         allowNull: false,
       },
       car_id: {
-        type: DataTypes.INTEGER.UNSIGNED,
+        fields: 'car_id',
+        type: DataTypes.STRING,
         foreignKey: true
       }
     });
@@ -145,7 +157,7 @@ module.exports = {
       type: 'foreign key',
       references: { table: 'cars', field: 'id' },
       onDelete: 'set null',
-      onUpdate: 'restrict'
+      onUpdate: 'cascade'
       //can use 'cascade' here
     });
     await queryInterface.addConstraint('cities', {
@@ -153,51 +165,52 @@ module.exports = {
       type: 'foreign key',
       references: { table: 'cars', field: 'id' },
       onDelete: 'set null',
-      onUpdate: 'restrict'
+      onUpdate: 'cascade'
     });
     await queryInterface.addConstraint('contacts', {
       fields: ['car_id'],
       type: 'foreign key',
       references: { table: 'cars', field: 'id' },
       onDelete: 'set null',
-      onUpdate: 'restrict'
+      onUpdate: 'cascade'
     });
     await queryInterface.addConstraint('drive_unit', {
       fields: ['car_id'],
       type: 'foreign key',
       references: { table: 'cars', field: 'id' },
       onDelete: 'set null',
-      onUpdate: 'restrict'
+      onUpdate: 'cascade'
     });
-    await queryInterface.addConstraint('marka', {
+    await queryInterface.addConstraint('makes', {
       fields: ['car_id'],
       type: 'foreign key',
       references: { table: 'cars', field: 'id' },
       onDelete: 'set null',
-      onUpdate: 'restrict'
+      onUpdate: 'cascade'
     });
     await queryInterface.addConstraint('models', {
-      fields: ['marka_id'],
+      fields: ['car_id'],
       type: 'foreign key',
-      references: { table: 'marka', field: 'id' },
+      references: { table: 'cars', field: 'id' },
       onDelete: 'set null',
-      onUpdate: 'restrict'
+      onUpdate: 'cascade'
     });
     await queryInterface.addConstraint('photos', {
       fields: ['car_id'],
       type: 'foreign key',
       references: { table: 'cars', field: 'id' },
       onDelete: 'set null',
-      onUpdate: 'restrict'
+      onUpdate: 'cascade'
     });
     await queryInterface.addConstraint('transmission', {
       fields: ['car_id'],
       type: 'foreign key',
       references: { table: 'cars', field: 'id' },
       onDelete: 'set null',
-      onUpdate: 'restrict'
+      onUpdate: 'cascade'
     });
   },
+
 
   async down (queryInterface, Sequelize) {
     await queryInterface.dropTable('photos');
@@ -205,7 +218,7 @@ module.exports = {
     await queryInterface.dropTable('cities');
     await queryInterface.dropTable('contacts');
     await queryInterface.dropTable('drive_unit');
-    await queryInterface.dropTable('markas');
+    await queryInterface.dropTable('makes');
     await queryInterface.dropTable('models');
     await queryInterface.dropTable('photos');
   }

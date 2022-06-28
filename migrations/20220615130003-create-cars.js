@@ -1,17 +1,19 @@
 'use strict';
 
 const {DataTypes} = require("sequelize");
+const Sequelize = require("sequelize");
 module.exports = {
   async up (queryInterface, Sequelize) {
      await queryInterface.createTable('cars', {
        id: {
-         type: DataTypes.INTEGER.UNSIGNED,
+        // field: 'id',
+         type: DataTypes.STRING,
          primaryKey: true,
-         autoIncrement: true
+        //  autoIncrement: true
        },
        spec_card: {
          type: Sequelize.BOOLEAN,
-         allowNull: false,
+        //  allowNull: false,
        },
        engine: {
          type: Sequelize.STRING
@@ -25,8 +27,12 @@ module.exports = {
        color: {
          type: Sequelize.STRING
        },
-       mileage: {
+       mileageKm: {
          type: Sequelize.STRING
+       },
+       description: {
+         type: Sequelize.TEXT,
+         allowNull: false,
        },
        created_at: {
          type: DataTypes.DATE },
